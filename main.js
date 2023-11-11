@@ -3,8 +3,44 @@ const products = [
         id: Math.floor(Math.random() * 100000),
         name: 'Donner DDP-80 Digital-Piano',
         price: 679.99,
-        img: '"https://images.unsplash.com/photo-1552422535-c45813c61732?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGlhbm98ZW58MHx8MHx8fDA%3D'
+        img: "https://images.unsplash.com/photo-1552422535-c45813c61732?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGlhbm98ZW58MHx8MHx8fDA%3D",
     }
 ]
 
+const list = document.getElementById('list');
 
+
+function createdCard () {
+    for ( let el of products) {
+        const card = document.createElement('div');
+        const imgWrap = document.createElement('figure');
+        const img = document.createElement('img');
+        const imgName = document.createElement('figcaption');
+        const producName = document.createElement('p');
+        const price = document.createElement('span');
+        const produPrice = document.createElement('p');
+
+        card.className = "card";
+        producName.className = "funcCont";
+        produPrice.className = "funcCont"
+        price.className = "price"
+        img.alt = "img";
+        img.src = el.img;
+
+        producName.textContent = el.name;
+        produPrice.textContent = el.price;
+
+        price.textContent = "Price: ";
+        imgName.textContent = "Name: ";
+
+        price.appendChild(produPrice);
+        imgName.appendChild(producName);
+        imgWrap.appendChild(img);
+        card.append(imgWrap, imgName, price);
+
+        list.appendChild(card)
+
+    }
+}
+
+createdCard()
