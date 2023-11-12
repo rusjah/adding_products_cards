@@ -1,4 +1,4 @@
-const products = [
+let products = [
     {
         id: Math.floor(Math.random() * 10000),
         name: 'Donner DDP-80 Digital-Piano',
@@ -26,12 +26,12 @@ form.addEventListener('submit', (e) => {
        element.value = '';
     }
 
-    createdCard()
+    displayAllCards()
    
 })
 
 
-function createdCard () {
+function displayAllCards () {
     list.innerHTML = '';
     for ( let el of products) {
         const card = document.createElement('div');
@@ -65,7 +65,11 @@ function createdCard () {
 
         list.appendChild(card)
 
+        delBtn.addEventListener('click', () => {
+            products = products.filter(it => el.id != it.id);
+            displayAllCards();
+        })
+
     }
 }
 
-createdCard()
