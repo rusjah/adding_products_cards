@@ -75,14 +75,15 @@ h2 {
     scroll-behavior: smooth;
 }
 
-.list::-webkit-scrollbar { /* WebKit */
+.list::-webkit-scrollbar { 
     width: 0;
     height: 0;
 }
 
 .card {
-    width: 40%;
-    height: 40vh;
+    width: 44%;
+    /* height: 40vh; */
+    height: 60%;
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
