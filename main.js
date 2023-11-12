@@ -1,16 +1,18 @@
-let products = [
-    {
-        id: Math.floor(Math.random() * 10000),
-        name: 'Donner DDP-80 Digital-Piano',
-        price: 679.99,
-        img: "https://images.unsplash.com/photo-1552422535-c45813c61732?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGlhbm98ZW58MHx8MHx8fDA%3D",
-    }
-]
+// let products = [
+//     {
+//         id: Math.floor(Math.random() * 10000),
+//         name: 'Donner DDP-80 Digital-Piano',
+//         price: 679.99,
+//         img: "https://images.unsplash.com/photo-1552422535-c45813c61732?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGlhbm98ZW58MHx8MHx8fDA%3D",
+//     }
+// ]
+
+let products = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : [];
 
 const list = document.getElementById('list');
 const form = document.getElementById('form');
 
-// createdCard();
+displayAllCards();
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -20,6 +22,8 @@ form.addEventListener('submit', (e) => {
         price: e.target.price.value,
         img: e.target.urlPhoto.value
     })
+
+    localStorage.setItem('products', JSON.stringify(products));
     
     for (let i = 0; i < e.target.length - 1; i++) {
        const element = e.target[i];
@@ -67,6 +71,7 @@ function displayAllCards () {
 
         delBtn.addEventListener('click', () => {
             products = products.filter(it => el.id != it.id);
+            localStorage.setItem('products', JSON.stringify(products));
             displayAllCards();
         })
 
