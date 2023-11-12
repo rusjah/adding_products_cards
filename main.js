@@ -10,7 +10,7 @@ const products = [
 const list = document.getElementById('list');
 const form = document.getElementById('form');
 
-createdCard();
+// createdCard();
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -41,8 +41,10 @@ function createdCard () {
         const producName = document.createElement('p');
         const price = document.createElement('span');
         const produPrice = document.createElement('p');
+        const delBtn = document.createElement('button');
 
         card.className = "card";
+        delBtn.className = "del-btn";
         producName.className = "funcCont";
         produPrice.className = "funcCont"
         price.className = "price"
@@ -54,11 +56,12 @@ function createdCard () {
 
         price.textContent = "Price: ";
         imgName.textContent = "Name: ";
+        delBtn.textContent = "X"
 
         price.appendChild(produPrice);
         imgName.appendChild(producName);
         imgWrap.appendChild(img);
-        card.append(imgWrap, imgName, price);
+        card.append(delBtn, imgWrap, imgName, price);
 
         list.appendChild(card)
 
